@@ -37,6 +37,7 @@ jobs:
 
       - name: Run Recon
         run: |
+          ls -R  # هذا السطر سيطبع لك قائمة الملفات الموجودة حالياً
           chmod +x recon.sh
           ./recon.sh .
 
