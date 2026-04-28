@@ -37,8 +37,13 @@ jobs:
 
       - name: Run Recon
         run: |
-          ls -R  # هذا السطر سيطبع لك قائمة الملفات الموجودة حالياً
+          # إصلاح نهايات السطور من صيغة ويندوز إلى لينكس
+          sed -i 's/\r$//' recon.sh
+          
+          # إعطاء صلاحيات التنفيذ
           chmod +x recon.sh
+          
+          # تشغيل السكربت
           ./recon.sh .
 
       - name: Save State to GitHub
