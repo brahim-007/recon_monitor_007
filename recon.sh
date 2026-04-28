@@ -8,7 +8,7 @@ DOMAIN="myprotein.com"
 
 # --- 1. مراقبة النطاقات الفرعية ---
 print_status "Subdomain Discovery"
-subfinder -d $DOMAIN -silent | sort -u | httpx -mc 200,301,302,403 -silent | anew all-domains.txt > new_domains.txt
+subfinder -d $DOMAIN -silent | sort -u | httpx -fc 404 -silent | anew all-domains.txt > new_domains.txt
 if [ -s new_domains.txt ]; then
     cat new_domains.txt | notify -id subdomains
 fi
@@ -22,7 +22,7 @@ cat all-domains.txt | gau --threads 10 | grep -viE "$JUNK_FILTER" | uro > waybac
 katana -list all-domains.txt -d 3 -jc -silent | grep -viE "$JUNK_FILTER" > katana_raw.txt
 
 # دمج الروابط وفحص الحية منها
-cat wayback_raw.txt katana_raw.txt | sort -u | httpx -mc 200,301,302,403 -silent | anew all_live_urls.txt > new_urls.txt
+cat wayback_raw.txt katana_raw.txt | sort -u | httpx -mc 200,301,302,403,404 -silent | anew all_live_urls.txt > new_urls.txt
 if [ -s new_urls.txt ]; then
     cat new_urls.txt | notify -id endpoint
 fi
