@@ -1,36 +1,50 @@
-# This is a basic workflow to help you get started with Actions
+name: Recon-Advanced-Monitoring
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
+  schedule:
+    - cron: '0 */6 * * *' # كل 6 ساعات
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  recon-job:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
+      - name: Setup Go Environment
+        uses: actions/setup-go@v5
+        with:
+          go-version: 'stable'
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Install Hunting Tools
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+          go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+          go install -v github.com/projectdiscovery/katana/cmd/katana@latest
+          go install -v github.com/lc/gau/v2/cmd/gau@latest
+          go install -v github.com/projectdiscovery/anew@latest
+          go install -v github.com/projectdiscovery/notify/cmd/notify@latest
+          pip install uro
+          echo "/home/runner/go/bin" >> $GITHUB_PATH
+
+      - name: Setup Notification
+        env:
+          NOTIFY_CONFIG: ${{ secrets.NOTIFY_CONFIG }}
+        run: |
+          mkdir -p ~/.config/notify/
+          echo "$NOTIFY_CONFIG" > ~/.config/notify/provider-config.yaml
+
+      - name: Execute Recon Script
+        run: |
+          chmod +x recon.sh
+          ./recon.sh .
+
+      - name: Git Persistence (Save State)
+        run: |
+          git config --local user.email "recon-bot@github.com"
+          git config --local user.name "Recon-Bot"
+          # إضافة جميع ملفات "الذاكرة" لضمان عدم تكرار التنبيهات ومراقبة التغيير
+          git add all-domains.txt all_live_urls.txt FINAL_JS_ENDPOINTS.txt js_history_metadata.txt
+          git commit -m "Update Recon State: $(date +'%Y-%m-%d %H:%M')" || echo "No changes found"
+          git push
