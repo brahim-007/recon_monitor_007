@@ -1,21 +1,16 @@
-name: Recon-Advanced-Monitoring
+name: Recon-Ultimate-Monitoring
 
 on:
   schedule:
-    - cron: '0 */6 * * *' # كل 6 ساعات
+    - cron: '0 */6 * * *'
   workflow_dispatch:
 
 jobs:
   recon-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout Code
         uses: actions/checkout@v4
-
-      - name: Setup Go Environment
-        uses: actions/setup-go@v5
-        with:
-          go-version: 'stable'
 
       - name: Install Hunting Tools
         run: |
@@ -25,26 +20,30 @@ jobs:
           go install -v github.com/lc/gau/v2/cmd/gau@latest
           go install -v github.com/projectdiscovery/anew@latest
           go install -v github.com/projectdiscovery/notify/cmd/notify@latest
+          go install -v github.com/003random/getJS@latest
           pip install uro
           echo "/home/runner/go/bin" >> $GITHUB_PATH
 
-      - name: Setup Notification
+      - name: Configure API Keys & Discord
         env:
+          SUBFINDER_CONFIG: ${{ secrets.SUBFINDER_CONFIG }}
           NOTIFY_CONFIG: ${{ secrets.NOTIFY_CONFIG }}
         run: |
+          # إعداد ملفات التكوين في مساراتها الصحيحة
+          mkdir -p ~/.config/subfinder/
           mkdir -p ~/.config/notify/
+          echo "$SUBFINDER_CONFIG" > ~/.config/subfinder/provider-config.yaml
           echo "$NOTIFY_CONFIG" > ~/.config/notify/provider-config.yaml
 
-      - name: Execute Recon Script
+      - name: Run Recon
         run: |
           chmod +x recon.sh
           ./recon.sh .
 
-      - name: Git Persistence (Save State)
+      - name: Save State to GitHub
         run: |
-          git config --local user.email "recon-bot@github.com"
+          git config --local user.email "bot@github.com"
           git config --local user.name "Recon-Bot"
-          # إضافة جميع ملفات "الذاكرة" لضمان عدم تكرار التنبيهات ومراقبة التغيير
           git add all-domains.txt all_live_urls.txt FINAL_JS_ENDPOINTS.txt js_history_metadata.txt
-          git commit -m "Update Recon State: $(date +'%Y-%m-%d %H:%M')" || echo "No changes found"
+          git commit -m "Update Recon Database [skip ci]" || echo "No changes"
           git push
