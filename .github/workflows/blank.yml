@@ -16,11 +16,11 @@ jobs:
         run: |
           go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-          go install -v github.com/projectdiscovery/katana/cmd/katana@latest
-          go install -v github.com/lc/gau/v2/cmd/gau@latest
-          go install -v github.com/projectdiscovery/anew@latest
+          go install github.com/projectdiscovery/katana/cmd/katana@latest
+          go install github.com/lc/gau/v2/cmd/gau@latest
+          go install -v github.com/tomnomnom/anew@latest
           go install -v github.com/projectdiscovery/notify/cmd/notify@latest
-          go install -v github.com/003random/getJS@latest
+          go install github.com/003random/getJS/v2@latest
           pip install uro
           echo "/home/runner/go/bin" >> $GITHUB_PATH
 
