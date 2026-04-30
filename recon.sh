@@ -28,7 +28,7 @@ cat all-domains.txt | gau --threads 10 | grep -viE "$JUNK_FILTER" | uro > waybac
 katana -list all-domains.txt -d 3 -jc -silent | grep -viE "$JUNK_FILTER" > katana_raw.txt
 
 # دمج الروابط وفحص الحية منها
-cat wayback_raw.txt katana_raw.txt | sort -u | sed 's/\/$//' | httpx -mc 200,301,302,403,404 -silent | anew all_live_urls.txt > new_urls.txt
+cat wayback_raw.txt katana_raw.txt | sort -u | sed 's/\/$//' | httpx -mc 200,301,302,403 -silent | anew all_live_urls.txt > new_urls.txt
 if [ -s new_urls.txt ]; then
     cat new_urls.txt | notify -id endpoint
 fi
