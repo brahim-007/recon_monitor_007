@@ -14,7 +14,7 @@ print_status "Cleaning Database Files"
 
 # --- 1. مراقبة النطاقات الفرعية ---
 print_status "Subdomain Discovery"
-subfinder -d $DOMAIN -silent | sort -u | httpx -fc 404 -silent | sed 's/\/$//' | anew all-domains.txt > new_domains.txt
+subfinder -d $DOMAIN -all -silent | sort -u | httpx -fc 404 -silent | sed 's/\/$//' | anew all-domains.txt > new_domains.txt
 if [ -s new_domains.txt ]; then
     cat new_domains.txt | notify -id subdomains
 fi
