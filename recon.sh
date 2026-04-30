@@ -10,7 +10,7 @@ DOMAIN="myprotein.com"
 print_status "Cleaning Database Files"
 [ -f all-domains.txt ] && sed -i 's/\/$//' all-domains.txt
 [ -f FINAL_JS_ENDPOINTS.txt ] && sed -i 's/\/$//' FINAL_JS_ENDPOINTS.txt
-[ -f  all_live_urls.txt ] && sed -i 's/\/$//'  all_live_urls.txt
+[ -f all_live_urls.txt ] && sed -i 's/\/$//' all_live_urls.txt
 
 # --- 1. مراقبة النطاقات الفرعية ---
 print_status "Subdomain Discovery"
