@@ -6,6 +6,11 @@ JUNK_FILTER="(google-analytics|googletag|doubleclick|adsystem|facebook|fbcdn|gta
 
 DOMAIN="myprotein.com"
 
+# [خطوة حاسمة] تنظيف الملفات المرجعية قبل البدء لضمان عدم وجود أخطاء سابقة
+print_status "Cleaning Database Files"
+[ -f all-domains.txt ] && sed -i 's/\/$//' all-domains.txt
+[ -f FINAL_JS_ENDPOINTS.txt ] && sed -i 's/\/$//' FINAL_JS_ENDPOINTS.txt
+
 # --- 1. مراقبة النطاقات الفرعية ---
 print_status "Subdomain Discovery"
 subfinder -d $DOMAIN -silent | sort -u | httpx -fc 404 -silent | sed 's/\/$//' | anew all-domains.txt > new_domains.txt
@@ -45,9 +50,10 @@ fi
 # --- 4. استخراج ومراقبة ملفات JS (الحجم والتغير) ---
 print_status "JS Monitoring (New Files & Size Changes)"
 
-# استخدام httpx لجلب حجم الملف (Content-Length) لكل رابط JS متاح (قديم وجديد)
-# النتيجة ستكون بصيغة: [https://url.com/file.js] [200] [12345]
-httpx -l FINAL_JS_ENDPOINTS.txt -status-code -content-length -silent > js_metadata_now.txt
+# التأكد من أن القائمة المدخلة لـ httpx منظفة أصلاً (خطوة إضافية للأمان)
+sed -i 's/\/$//' FINAL_JS_ENDPOINTS.txt 
+
+httpx -l FINAL_JS_ENDPOINTS.txt -status-code -content-length -silent | anew js_history_metadata.txt > js_changes.txt
 
 # المقارنة: anew سيعتبر أي سطر يتغير فيه الحجم سطرًا جديدًا ويرسل به تنبيه
 cat js_metadata_now.txt | anew js_history_metadata.txt > js_changes.txt
