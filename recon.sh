@@ -2,7 +2,12 @@
 
 # --- إعدادات وتنسيق ---
 print_status() { echo -e "\e[34m[*] $1...\e[0m"; }
+
+# فلتر للتخلص من القمامة (موجود مسبقاً)
 JUNK_FILTER="(google-analytics|googletag|doubleclick|adsystem|facebook|fbcdn|gtag|tagmanager|hotjar|clarity|png|jpg|css|google|youtube|linkedin|svg|woff|woff2|ttf|otf|ico)"
+
+# [الجديد] فلتر اصطياد الأهداف عالية القيمة (APIs, IDOR Params, Admin Panels, Logic)
+JUICY_FILTER="(api/|graphql|v[0-9]+/|auth|login|register|admin|dashboard|user/|profile|checkout|payment|config|env|token|oauth|rest|swagger|actuator|internal|debug|\?.*=)"
 
 DOMAIN="myprotein.com"
 
@@ -29,8 +34,19 @@ katana -list all-domains.txt -d 3 -jc -silent | grep -viE "$JUNK_FILTER" > katan
 
 # دمج الروابط وفحص الحية منها
 cat wayback_raw.txt katana_raw.txt | sort -u | sed 's/\/$//' | httpx -mc 200,301,302,403 -silent | anew all_live_urls.txt > new_urls.txt
+
+# [تعديل دقيق]: فلترة الروابط الجديدة وإرسال الإشعارات للروابط الحساسة فقط
 if [ -s new_urls.txt ]; then
-    cat new_urls.txt | notify -id endpoint
+    print_status "Extracting Juicy Endpoints for Notification"
+    # استخراج الروابط التي تطابق الفلتر الحساس فقط
+    grep -Ei "$JUICY_FILTER" new_urls.txt > juicy_urls.txt
+    
+    if [ -s juicy_urls.txt ]; then
+        echo "🔥 Juicy Endpoints Found!"
+        cat juicy_urls.txt | notify -id endpoint
+    else
+        echo "No juicy endpoints in this run, keeping quiet."
+    fi
 fi
 
 # --- 3. استخراج الـ JS وتحديد الجديد منه ---
@@ -54,7 +70,8 @@ print_status "JS Monitoring (New Files & Size Changes)"
 # التأكد من أن القائمة المدخلة لـ httpx منظفة أصلاً (خطوة إضافية للأمان)
 sed -i 's/\/$//' FINAL_JS_ENDPOINTS.txt 
 
-httpx -l FINAL_JS_ENDPOINTS.txt -status-code -content-length -silent | anew js_history_metadata.txt > js_changes.txt
+# [تم الإصلاح]: إنشاء ملف الميتا داتا الحالي قبل تمريره لـ anew
+httpx -l FINAL_JS_ENDPOINTS.txt -status-code -content-length -silent > js_metadata_now.txt
 
 # المقارنة: anew سيعتبر أي سطر يتغير فيه الحجم سطرًا جديدًا ويرسل به تنبيه
 cat js_metadata_now.txt | anew js_history_metadata.txt > js_changes.txt
