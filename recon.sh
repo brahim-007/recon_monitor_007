@@ -7,7 +7,7 @@ print_status() { echo -e "\e[34m[*] $1...\e[0m"; }
 JUNK_FILTER="(google-analytics|googletag|doubleclick|adsystem|facebook|fbcdn|gtag|tagmanager|hotjar|clarity|png|jpg|css|google|youtube|linkedin|svg|woff|woff2|ttf|otf|ico)"
 
 # [الجديد] فلتر اصطياد الأهداف عالية القيمة (APIs, IDOR Params, Admin Panels, Logic)
-JUICY_FILTER="(api/|graphql|v[0-9]+/|auth|login|register|admin|dashboard|user/|profile|checkout|payment|config|env|token|oauth|rest|swagger|actuator|internal|debug|\?.*=)"
+JUICY_FILTER="(api/|graphql|v[0-9]+/|auth|login|register|admin|dashboard|user/|profile|checkout|payment|config|env|token|oauth|rest|swagger|actuator|internal|debug)"
 
 DOMAIN="myprotein.com"
 
