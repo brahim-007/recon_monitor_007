@@ -2,36 +2,54 @@ name: Recon-Ultimate-Monitoring
 
 on:
   schedule:
-    - cron: '0 */12 * * *'
-  workflow_dispatch:
+    - cron: '0 */24 * * *' # يعمل كل 12 ساعة
+  workflow_dispatch: # يسمح بالتشغيل اليدوي
 
 jobs:
   recon-job:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # <--- هذا السطر هو مفتاح الحل السحري لمشكلة حفظ الحالة
+      contents: write # ضروري جداً لتمكين البوت من عمل Push للملفات المحدثة
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          # nmap و libpcap-dev ضروريان لعمل أداة Naabu و nmap داخل السكربت
+          sudo apt-get install -y nmap libpcap-dev
+
       - name: Install Hunting Tools
         run: |
+          # تثبيت أدوات ProjectDiscovery والآخرين
           go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-          go install github.com/projectdiscovery/katana/cmd/katana@latest
-          go install github.com/lc/gau/v2/cmd/gau@latest
+          go install -v github.com/projectdiscovery/katana/cmd/katana@latest
+          go install -v github.com/lc/gau/v2/cmd/gau@latest
           go install -v github.com/tomnomnom/anew@latest
           go install -v github.com/projectdiscovery/notify/cmd/notify@latest
-          go install github.com/003random/getJS/v2@latest
+          go install -v github.com/003random/getJS/v2@latest
+          
+          # [جديد] تثبيت أدوات فحص المنافذ وتحليل الجافا سكريبت
+          go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+          go install -v github.com/BishopFox/jsluice/cmd/jsluice@latest
+          go install -v github.com/MrEmpy/mantra@latest
+          
           pip install uro
+          
+          # إضافة مسار تشغيل Go إلى النظام
           echo "/home/runner/go/bin" >> $GITHUB_PATH
+          
+          # تحريك Naabu لمسار النظام ليعمل مع sudo بسلاسة
+          sudo cp /home/runner/go/bin/naabu /usr/local/bin/
 
       - name: Configure API Keys & Discord
         env:
           SUBFINDER_CONFIG: ${{ secrets.SUBFINDER_CONFIG }}
           NOTIFY_CONFIG: ${{ secrets.NOTIFY_CONFIG }}
         run: |
-          # إعداد ملفات التكوين في مساراتها الصحيحة
           mkdir -p ~/.config/subfinder/
           mkdir -p ~/.config/notify/
           echo "$SUBFINDER_CONFIG" > ~/.config/subfinder/provider-config.yaml
@@ -39,19 +57,27 @@ jobs:
 
       - name: Run Recon
         run: |
-          # إصلاح نهايات السطور من صيغة ويندوز إلى لينكس
+          # تنظيف نهايات السطور (Windows to Linux)
           sed -i 's/\r$//' recon.sh
-          
-          # إعطاء صلاحيات التنفيذ
           chmod +x recon.sh
           
-          # تشغيل السكربت
-          ./recon.sh .
+          # تشغيل السكربت مع الحفاظ على متغيرات البيئة للـ sudo
+          sudo -E env "PATH=$PATH" ./recon.sh
 
       - name: Save State to GitHub
         run: |
           git config --local user.email "bot@github.com"
           git config --local user.name "Recon-Bot"
-          git add all-domains.txt all_live_urls.txt FINAL_JS_ENDPOINTS.txt js_history_metadata.txt
-          git commit -m "Update Recon Database [skip ci]" || echo "No changes"
-          git push
+          
+          # [هام] إضافة كافة ملفات الحالة الجديدة التي ينتجها السكربت لضمان عدم التكرار
+          git add all-domains.txt \
+                  all_live_urls.txt \
+                  FINAL_JS_ENDPOINTS.txt \
+                  js_history_metadata.txt \
+                  port_scan_results.txt \
+                  js_endpoints_extracted.txt \
+                  js_secrets.txt \
+                  new_403_401.txt
+          
+          git commit -m "Update Recon Database: $(date +'%Y-%m-%d %H:%M') [skip ci]" || echo "No changes to commit"
+          git push origin main
