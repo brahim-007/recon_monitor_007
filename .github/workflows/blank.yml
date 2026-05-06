@@ -75,8 +75,7 @@ jobs:
                   FINAL_JS_ENDPOINTS.txt \
                   js_history_metadata.txt \
                   port_scan_results.txt \
-                  js_endpoints_extracted.txt \
-                  js_secrets.txt \
+                  js_endpoints_extracted.txt \        
                   new_403_401.txt
           
           git commit -m "Update Recon Database: $(date +'%Y-%m-%d %H:%M') [skip ci]" || echo "No changes to commit"
