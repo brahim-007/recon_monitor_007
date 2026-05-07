@@ -34,8 +34,8 @@ jobs:
           
           # [جديد] تثبيت أدوات فحص المنافذ وتحليل الجافا سكريبت
           go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-          go mod edit -replace github.com/MrEmpy/mantra=github.com/brosck/mantra@latest
-          # أو إذا كنت تثبت الأداة مباشرة:
+          go install -v github.com/MrEmpy/mantra@latest
+          # أو إذا كنت تثبت الأداة مباشرة
           go install github.com/BishopFox/jsluice/cmd/jsluice@latest
           
           pip install uro
