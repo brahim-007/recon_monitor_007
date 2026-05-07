@@ -98,8 +98,7 @@ if [ -s new_js_found.txt ] || [ -s js_changes.txt ]; then
     cat new_js_found.txt js_changes.txt 2>/dev/null | xargs -I % jsluice urls % | grep "$DOMAIN" | anew js_endpoints_extracted.txt > new_endpoints_found.txt
     
     # 2. استخراج الأسرار باستخدام mantra و jsluice
-    cat new_js_found.txt js_changes.txt 2>/dev/null | xargs -I % mantra -u % | anew js_secrets.txt > new_secrets_only.txt
-    cat new_js_found.txt js_changes.txt 2>/dev/null | xargs -I % jsluice secrets % | anew js_secrets.txt >> new_secrets_only.txt
+    cat new_js_found.txt js_changes.txt 2>/dev/null | xargs -I % jsluice secrets % | anew js_secrets.txt > new_secrets_only.txt
 
     # 3. دمج كل النتائج الجديدة (Endpoints + Secrets) لإرسالها إلى id secrets
     cat new_endpoints_found.txt new_secrets_only.txt | sort -u > all_new_secrets_and_endpoints.txt
