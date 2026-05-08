@@ -30,7 +30,7 @@ print_status "Advanced Port Scanning with Naabu & Nmap"
 cat all-domains.txt new_domains.txt | sort -u | sed 's/\/$//' -o subdomains_to_scan.txt
 if [ -s new_domains.txt ]; then
     # استخدام -p- لمسح 65535 منفذ + nmap لتعريف الخدمات والإصدارات
-    naabu -list subdomains_to_scan.txt -rate 3000 -p - -silent -c 100 -nmap-cli "nmap -sV -sC --open -T4" -o port_scan_results.txt
+    sudo naabu -list subdomains_to_scan.txt -rate 3000 -p - -silent -c 100 -nmap-cli "nmap -sV -sC --open -T4" > port_scan_results.txt
     if [ -s port_scan_results.txt ]; then
         # ضمان إرسال المنافذ الخاصة بالدومين المستهدف فقط
         cat port_scan_results.txt | grep "$DOMAIN" | notify -id ports
