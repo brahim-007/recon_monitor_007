@@ -27,7 +27,7 @@ fi
 # --- [جديد] 2. فحص المنافذ المتقدم (Enhanced Naabu) ---
 # تم جعل الفحص أقوى باستخدام مسح كافة المنافذ وفحص الخدمات العميق
 print_status "Advanced Port Scanning with Naabu & Nmap"
-cat all-domains.txt new_domains.txt | sort -u | sed 's/\/$//' -o subdomains_to_scan.txt
+cat all-domains.txt new_domains.txt | sort -u | sed 's/\/$//' > subdomains_to_scan.txt
 if [ -s new_domains.txt ]; then
     # استخدام -p- لمسح 65535 منفذ + nmap لتعريف الخدمات والإصدارات
     sudo naabu -list subdomains_to_scan.txt -rate 3000 -p - -silent -c 100 -nmap-cli "nmap -sV -sC --open -T4" > port_scan_results.txt
