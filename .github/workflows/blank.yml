@@ -69,14 +69,8 @@ jobs:
           git config --local user.email "bot@github.com"
           git config --local user.name "Recon-Bot"
           
-          # [هام] إضافة كافة ملفات الحالة الجديدة التي ينتجها السكربت لضمان عدم التكرار
-          git add all-domains.txt \
-                  all_live_urls.txt \
-                  FINAL_JS_ENDPOINTS.txt \
-                  js_history_metadata.txt \
-                  port_scan_results.txt \
-                  js_endpoints_extracted.txt \        
-                  new_403_401.txt
+          # إزالة أي ملفات قد لا تكون موجودة لتجنب خطأ git add
+          git add all-domains.txt all_live_urls.txt FINAL_JS_ENDPOINTS.txt js_history_metadata.txt port_scan_results.txt js_endpoints_extracted.txt new_403_401.txt || echo "Some files were not found, skipping..."
           
           git commit -m "Update Recon Database: $(date +'%Y-%m-%d %H:%M') [skip ci]" || echo "No changes to commit"
           git push origin main
