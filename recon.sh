@@ -24,15 +24,14 @@ if [ -s new_domains.txt ]; then
     cat new_domains.txt | notify -id subdomains
 fi
 
-# --- [جديد] 2. فحص المنافذ المتقدم (Enhanced Naabu) ---
-# تم جعل الفحص أقوى باستخدام مسح كافة المنافذ وفحص الخدمات العميق
-print_status "Advanced Port Scanning with Naabu & Nmap"
+# --- 2. فحص المنافذ المتقدم ---
+print_status "Advanced Port Scanning"
 cat all-domains.txt new_domains.txt | sort -u | sed 's/\/$//' > subdomains_to_scan.txt
 if [ -s new_domains.txt ]; then
-    # استخدام -p- لمسح 65535 منفذ + nmap لتعريف الخدمات والإصدارات
     sudo naabu -list subdomains_to_scan.txt -rate 3000 -p - -silent -c 100 -nmap-cli "nmap -sV -sC --open -T4" > port_scan_results.txt
+    # تصحيح ملكية الملف لضمان القدرة على رفعه لاحقاً
+    sudo chown runner:docker port_scan_results.txt 2>/dev/null
     if [ -s port_scan_results.txt ]; then
-        # ضمان إرسال المنافذ الخاصة بالدومين المستهدف فقط
         cat port_scan_results.txt | grep "$DOMAIN" | notify -id ports
     fi
 fi
@@ -54,7 +53,7 @@ if [ -s new_urls.txt ]; then
     fi
     
     # [تصحيح] فرز روابط 403-401 وإرسالها (ثغرات Broken Access Control)
-    cat juicy_urls.txt | httpx -mc 403,401 -silent anew new_403_401.txt # تم تصحيح اسم الملف
+    cat juicy_urls.txt | httpx -mc 403,401 -silent | anew new_403-401.txt # تم تصحيح اسم الملف
     if [ -s new_403_401.txt ]; then
         cat new_403_401.txt | notify -id new_403-401
     fi
@@ -87,25 +86,38 @@ if [ -s js_changes.txt ]; then
     cat js_changes.txt | grep "$DOMAIN" | notify -id js_discovery
 fi
 
-# --- [جديد] 5. التحليل العميق للجافا سكريبت (jsluice & mantra) ---
+
 # استخراج الأسرار والبرامترات والـ API من الملفات الجديدة
-# --- [تعديل] 5. التحليل العميق للجافا سكريبت (Deep Analysis & Secrets) ---
+# --- [تصحيح] 5. التحليل العميق مع تجاوز خطأ 406 ---
 if [ -s new_js_found.txt ] || [ -s js_changes.txt ]; then
-    print_status "Deep Analysis: Extracting Endpoints & API Keys"
-    
-    # 1. استخراج الروابط ونقاط الـ API/GraphQL وحفظها
-    # ملاحظة: دمجنا النتائج هنا لترسل مع الأسرار لاحقاً
-    cat new_js_found.txt js_changes.txt 2>/dev/null | xargs -I % jsluice urls % | grep "$DOMAIN" | anew js_endpoints_extracted.txt > new_endpoints_found.txt
-    
-    # 2. استخراج الأسرار باستخدام mantra و jsluice
-    cat new_js_found.txt js_changes.txt 2>/dev/null | xargs -I % jsluice secrets % | anew js_secrets.txt > new_secrets_only.txt
+    print_status "Deep Analysis: Fixing 406 Error & Extracting Data"
 
-    # 3. دمج كل النتائج الجديدة (Endpoints + Secrets) لإرسالها إلى id secrets
-    cat new_endpoints_found.txt new_secrets_only.txt | sort -u > all_new_secrets_and_endpoints.txt
+    # جلب المحتوى مع ترويسات متصفح حقيقي لتجاوز المنع
+    cat new_js_found.txt js_changes.txt 2>/dev/null | sort -u | \
+    httpx -silent \
+      -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+      -H "Accept: */*" \
+      -body > js_bodies_temp.txt
 
-    if [ -s all_new_secrets_and_endpoints.txt ]; then
-        echo -e "🔥 [New Discovery] Endpoints & Secrets for $DOMAIN:" | notify -id secrets
-        cat all_new_secrets_and_endpoints.txt | notify -id secrets
+    # الآن نمرر المحتوى النظيف لـ jsluice (لن تظهر أخطاء 406 هنا لأننا جلبنا الملف محلياً)
+    
+    # 1. استخراج الروابط
+    cat js_bodies_temp.txt | jsluice urls | grep "$DOMAIN" | anew js_endpoints_extracted.txt > new_endpoints_found.txt
+    
+    # 2. استخراج البرامترات
+    cat js_bodies_temp.txt | jsluice urls | grep "?" | cut -d '?' -f 2- | tr '&' '\n' | cut -d '=' -f 1 | sort -u | anew js_parameters_extracted.txt > new_params_found.txt
+    
+    # 3. استخراج الأسرار
+    cat js_bodies_temp.txt | jsluice secrets | anew js_secrets.txt > new_secrets_only.txt
+
+    # دمج النتائج للتنبيه
+    cat new_endpoints_found.txt new_params_found.txt new_secrets_only.txt 2>/dev/null | sort -u > all_new_discovery.txt
+
+    if [ -s all_new_discovery.txt ]; then
+        echo -e "🚀 [Bypassed 406] New Discovery for $DOMAIN" | notify -id secrets
+        cat all_new_discovery.txt | notify -id secrets
     fi
+    
+    rm js_bodies_temp.txt
 fi
 
