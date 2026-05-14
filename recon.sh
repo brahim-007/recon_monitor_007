@@ -92,32 +92,34 @@ fi
 if [ -s new_js_found.txt ] || [ -s js_changes.txt ]; then
     print_status "Deep Analysis: Fixing 406 Error & Extracting Data"
 
-    # جلب المحتوى مع ترويسات متصفح حقيقي لتجاوز المنع
+    # تفريغ الملف المؤقت إذا كان موجوداً لتجنب تراكب البيانات
+    > js_bodies_temp.txt
+
+    # استخدام xargs مع curl لجلب محتوى كل رابط بهدوء وبترويسات متصفح حقيقي
+    # xargs -I % يمرر كل رابط إلى curl مكان علامة %
     cat new_js_found.txt js_changes.txt 2>/dev/null | sort -u | \
-    httpx -silent \
-      -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
-      -H "Accept: */*" \
-      -body > js_bodies_temp.txt
+    xargs -I % curl -s -k -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept: */*" "%" >> js_bodies_temp.txt
 
-    # الآن نمرر المحتوى النظيف لـ jsluice (لن تظهر أخطاء 406 هنا لأننا جلبنا الملف محلياً)
-    
-    # 1. استخراج الروابط
-    cat js_bodies_temp.txt | jsluice urls | grep "$DOMAIN" | anew js_endpoints_extracted.txt > new_endpoints_found.txt
-    
-    # 2. استخراج البرامترات
-    cat js_bodies_temp.txt | jsluice urls | grep "?" | cut -d '?' -f 2- | tr '&' '\n' | cut -d '=' -f 1 | sort -u | anew js_parameters_extracted.txt > new_params_found.txt
-    
-    # 3. استخراج الأسرار
-    cat js_bodies_temp.txt | jsluice secrets | anew js_secrets.txt > new_secrets_only.txt
+    # التأكد من أن التنزيل نجح والملف يحتوي على بيانات
+    if [ -s js_bodies_temp.txt ]; then
+        
+        # 1. استخراج الروابط
+        cat js_bodies_temp.txt | jsluice urls | grep "$DOMAIN" | anew js_endpoints_extracted.txt > new_endpoints_found.txt
+        
+        # 2. استخراج البرامترات (تم إضافة فلتر grep الأخير لضمان استخراج أسماء برامترات نظيفة فقط)
+        cat js_bodies_temp.txt | jsluice urls | grep "?" | cut -d '?' -f 2- | tr '&' '\n' | cut -d '=' -f 1 | grep -E '^[a-zA-Z0-9_-]+$' | sort -u | anew js_parameters_extracted.txt > new_params_found.txt
+        
+        # 3. استخراج الأسرار
+        cat js_bodies_temp.txt | jsluice secrets | anew js_secrets.txt > new_secrets_only.txt
 
-    # دمج النتائج للتنبيه
-    cat new_endpoints_found.txt new_params_found.txt new_secrets_only.txt 2>/dev/null | sort -u > all_new_discovery.txt
+        # دمج النتائج للتنبيه
+        cat new_endpoints_found.txt new_params_found.txt new_secrets_only.txt 2>/dev/null | sort -u > all_new_discovery.txt
 
-    if [ -s all_new_discovery.txt ]; then
-        echo -e "🚀 [Bypassed 406] New Discovery for $DOMAIN" | notify -id secrets
-        cat all_new_discovery.txt | notify -id secrets
+        if [ -s all_new_discovery.txt ]; then
+            echo -e "🚀 [Bypassed 406] New Discovery for $DOMAIN" | notify -id secrets
+            cat all_new_discovery.txt | notify -id secrets
+        fi
+        
+        rm js_bodies_temp.txt
     fi
-    
-    rm js_bodies_temp.txt
 fi
-
