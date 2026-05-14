@@ -2,7 +2,7 @@ name: Recon-Ultimate-Monitoring
 
 on:
   schedule:
-    - cron: '0 */24 * * *' #بعد كل 20 ساعة يعمل 
+    - cron: '0 */18 * * *' #بعد كل 20 ساعة يعمل 
   workflow_dispatch: # يسمح بالتشغيل اليدوي
 
 jobs:
