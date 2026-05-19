@@ -87,39 +87,31 @@ if [ -s js_changes.txt ]; then
 fi
 
 
-# استخراج الأسرار والبرامترات والـ API من الملفات الجديدة
-# --- [تصحيح] 5. التحليل العميق مع تجاوز خطأ 406 ---
+# --- 5. التحليل العميق المصحح ---
 if [ -s new_js_found.txt ] || [ -s js_changes.txt ]; then
-    print_status "Deep Analysis: Fixing 406 Error & Extracting Data"
+    print_status "Deep Analysis: Filtering WAF/Blocked Content"
+    
+    # دمج الروابط
+    cat new_js_found.txt js_changes.txt 2>/dev/null | sort -u > all_js_to_analyze.txt
 
-    # تفريغ الملف المؤقت إذا كان موجوداً لتجنب تراكب البيانات
-    > js_bodies_temp.txt
-
-    # استخدام xargs مع curl لجلب محتوى كل رابط بهدوء وبترويسات متصفح حقيقي
-    # xargs -I % يمرر كل رابط إلى curl مكان علامة %
-    cat new_js_found.txt js_changes.txt 2>/dev/null | sort -u | \
-    xargs -I % curl -s -k -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" -H "Accept: */*" "%" >> js_bodies_temp.txt
-
-    # التأكد من أن التنزيل نجح والملف يحتوي على بيانات
-    if [ -s js_bodies_temp.txt ]; then
+    while read -r url; do
+        # تحميل الملف وفحصه في الذاكرة (لا نحفظه في ملف فوراً)
+        content=$(curl -s -k -L -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" "$url")
         
-        # 1. استخراج الروابط
-        cat js_bodies_temp.txt | jsluice urls | grep "$DOMAIN" | anew js_endpoints_extracted.txt > new_endpoints_found.txt
-        
-        # 2. استخراج البرامترات (تم إضافة فلتر grep الأخير لضمان استخراج أسماء برامترات نظيفة فقط)
-        cat js_bodies_temp.txt | jsluice urls | grep "?" | cut -d '?' -f 2- | tr '&' '\n' | cut -d '=' -f 1 | grep -E '^[a-zA-Z0-9_-]+$' | sort -u | anew js_parameters_extracted.txt > new_params_found.txt
-        
-        # 3. استخراج الأسرار
-        cat js_bodies_temp.txt | jsluice secrets | anew js_secrets.txt > new_secrets_only.txt
-
-        # دمج النتائج للتنبيه
-        cat new_endpoints_found.txt new_params_found.txt new_secrets_only.txt 2>/dev/null | sort -u > all_new_discovery.txt
-
-        if [ -s all_new_discovery.txt ]; then
-            echo -e "🚀 [Bypassed 406] New Discovery for $DOMAIN" | notify -id secrets
-            cat all_new_discovery.txt | notify -id secrets
+        # التأكد أن المحتوى ليس صفحة حظر (نبحث عن كلمة "Access Temporarily Restricted")
+        if echo "$content" | grep -q "Access Temporarily Restricted"; then
+            echo -e "\e[31m[-] Blocked by WAF: $url\e[0m"
+            continue
         fi
+
+        # إذا مر الفحص، نمرره للـ jsluice
+        echo "$content" | jsluice urls | grep "$DOMAIN" | anew js_endpoints_extracted.txt >> new_endpoints_found.txt
+        echo "$content" | jsluice secrets | anew js_secrets.txt >> new_secrets_only.txt
         
-        rm js_bodies_temp.txt
+    done < all_js_to_analyze.txt
+    
+    # التنبيه بالنتائج إن وجدت
+    if [ -s new_endpoints_found.txt ] || [ -s new_secrets_only.txt ]; then
+        echo -e "🚀 [Success] Analysis completed for $DOMAIN" | notify -id secrets
     fi
 fi
