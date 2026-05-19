@@ -87,31 +87,72 @@ if [ -s js_changes.txt ]; then
 fi
 
 
-# --- 5. التحليل العميق المصحح ---
+# --- 5. التحليل العميق المصحح (النسخة الاحترافية) ---
 if [ -s new_js_found.txt ] || [ -s js_changes.txt ]; then
-    print_status "Deep Analysis: Filtering WAF/Blocked Content"
+    print_status "Deep Analysis: Downloading JS Content & Analyzing with jsluice"
     
-    # دمج الروابط
+    # دمج تجميعة الروابط المكتشفة والجديدة في لستة موحدة
     cat new_js_found.txt js_changes.txt 2>/dev/null | sort -u > all_js_to_analyze.txt
 
+    # تهيئة ملفات مؤقتة نظيفة لتجميع مستخرجات هذه الدورة قبل مقارنتها
+    > temp_endpoints.txt
+    > temp_secrets.txt
+
     while read -r url; do
-        # تحميل الملف وفحصه في الذاكرة (لا نحفظه في ملف فوراً)
-        content=$(curl -s -k -L -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" "$url")
+        # تخطي الأسطر الفارغة إن وجدت
+        [ -z "$url" ] && continue
+
+        echo -e "[*] Fetching content for: $url"
         
-        # التأكد أن المحتوى ليس صفحة حظر (نبحث عن كلمة "Access Temporarily Restricted")
-        if echo "$content" | grep -q "Access Temporarily Restricted"; then
-            echo -e "\e[31m[-] Blocked by WAF: $url\e[0m"
+        # تحميل كود الجافا سكريبت الفعلي إلى الذاكرة بتوليفة ترويسات متصفح حقيقي لتجاوز الـ WAF
+        content=$(curl -s -k -L --max-time 15 \
+          -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" \
+          -H "Accept: text/javascript, application/javascript, application/ecmascript, application/x-ecmascript, */*; q=0.01" \
+          -H "Accept-Language: en-US,en;q=0.9" \
+          "$url")
+        
+        # الفحص الأول: التأكد من أن السيرفر لم يرجع صفحة حظر HTML (Access Restricted)
+        if echo "$content" | grep -qE "(Access Temporarily Restricted|security systems have identified|Cloudflare)"; then
+            echo -e "\e[31m[-] Blocked by WAF or Invalid Content for: $url\e[0m"
             continue
         fi
 
-        # إذا مر الفحص، نمرره للـ jsluice
-        echo "$content" | jsluice urls -raw | sort -u | grep "$DOMAIN" | anew js_endpoints_extracted.txt >> new_endpoints_found.txt
-        echo "$content" | jsluice secrets | anew js_secrets.txt >> new_secrets_only.txt
+        # الفحص الثاني: التأكد من أن المحتوى المستلم ليس فارغاً
+        if [ -z "$content" ]; then
+            echo -e "\e[33m[-] Empty response for: $url\e[0m"
+            continue
+        fi
+
+        # التمرير الفعلي لـ jsluice بعد ضمان وجود كود برمجي حقيقي في الذاكرة
+        # 1. استخراج الروابط والمنافذ بشكل خام (Raw)
+        echo "$content" | jsluice urls -raw >> temp_endpoints.txt
+        
+        # 2. استخراج الأسرار الحقيقية النظيفة مع تجاهل أكواد الكومنتات (-g)
+        echo "$content" | jsluice secrets -g >> temp_secrets.txt
         
     done < all_js_to_analyze.txt
     
-    # التنبيه بالنتائج إن وجدت
-    if [ -s new_endpoints_found.txt ] || [ -s new_secrets_only.txt ]; then
-        echo -e "🚀 [Success] Analysis completed for $DOMAIN" | notify -id secrets
+    # تصفية وفلترة المخرجات ومقارنتها بالملفات الأساسية التاريخية باستخدام anew
+    if [ -s temp_endpoints.txt ]; then
+        # فلترة الروابط لتبقي فقط ما ينتمي لنطاق الهدف المستهدف وتنظيفها
+        cat temp_endpoints.txt | grep "$DOMAIN" | sort -u | sed 's/\/$//' | anew js_endpoints_extracted.txt > new_endpoints_found.txt
+    fi
+
+    if [ -s temp_secrets.txt ]; then
+        cat temp_secrets.txt | sort -u | anew js_secrets.txt > new_secrets_only.txt
+    fi
+
+    # تنظيف الملفات المؤقتة من السيرفر فوراً
+    rm -f temp_endpoints.txt temp_secrets.txt all_js_to_analyze.txt
+
+    # التنبيه الذكي: نرسل الإشعار فقط إذا ظهر شيء جديد فعلاً لم نكتشفه في الفحوصات السابقة
+    if [ -s new_endpoints_found.txt ]; then
+        echo -e "🚀 [New Endpoints Found] for $DOMAIN" | notify -id secrets
+        cat new_endpoints_found.txt | notify -id secrets
+    fi
+
+    if [ -s new_secrets_only.txt ]; then
+        echo -e "🔑 [CRITICAL: New Secrets Found] inside JS for $DOMAIN" | notify -id secrets
+        cat new_secrets_only.txt | notify -id secrets
     fi
 fi
