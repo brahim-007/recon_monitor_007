@@ -105,7 +105,7 @@ if [ -s new_js_found.txt ] || [ -s js_changes.txt ]; then
         fi
 
         # إذا مر الفحص، نمرره للـ jsluice
-        echo "$content" | jsluice urls | grep "$DOMAIN" | anew js_endpoints_extracted.txt >> new_endpoints_found.txt
+        echo "$content" | jsluice urls -raw | sort -u | grep "$DOMAIN" | anew js_endpoints_extracted.txt >> new_endpoints_found.txt
         echo "$content" | jsluice secrets | anew js_secrets.txt >> new_secrets_only.txt
         
     done < all_js_to_analyze.txt
