@@ -4149,3 +4149,5 @@ https://www.myprotein.com.sg/ssr-assets/ClientInit.astro_astro_type_script_index
 https://www.myprotein.com/ssr-assets/DynamicReferralWidget.astro_astro_type_script_index_0_lang.DXZ4XRw5.js
 https://www.myprotein.com/ssr-assets/index.astro_astro_type_script_index_0_lang.iMLna0IW.js
 https://www.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.BlBUUCmJ.js
+https://au.myprotein.com/ssr-assets/BuildYourOwnBundle.astro_astro_type_script_index_0_lang.DOKNNakP.js
+https://us.myprotein.com/account/ssr-assets/LoginForm.CxIB7zYa.js
