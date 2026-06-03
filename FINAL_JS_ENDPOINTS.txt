@@ -5133,3 +5133,12 @@ https://nz.myprotein.com/ssr-assets/Facets.astro_astro_type_script_index_0_lang.
 https://nz.myprotein.com/ssr-assets/HeaderFooter.astro_astro_type_script_index_1_lang.BfhEu0Jd.js
 https://nz.myprotein.com/ssr-assets/MobileNav.astro_astro_type_script_index_0_lang.CITvD58N.js
 https://nz.myprotein.com/ssr-assets/ProductListWidget.astro_astro_type_script_index_0_lang.B-5V6GBb.js
+https://fr-ca.myprotein.com/ssr-assets/addToBasket.ByqPNQNr.js
+https://fr-ca.myprotein.com/ssr-assets/session.dzqbRvjK.js
+https://kz.myprotein.com/ssr-assets/Wishlist.astro_astro_type_script_index_0_lang.B5Mj-vIW.js
+https://nl.myprotein.com/account/ssr-assets/Login.DtGNtv_V.js
+https://www.myprotein.com.hk/ssr-assets/Footer.astro_astro_type_script_index_0_lang.Ch6jShTv.js
+https://www.myprotein.com/ssr-assets/DesktopNav.ChOm3JIR.js
+https://www.myprotein.com/ssr-assets/addToBasket.ByqPNQNr.js
+https://www.myprotein.com/ssr-assets/index.RLlwqh3_.js
+https://www.myprotein.com/ssr-assets/session.dzqbRvjK.js
