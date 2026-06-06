@@ -5349,3 +5349,17 @@ https://www.myprotein.com/ssr-assets/index.DZVpN-8x.js
 https://www.myprotein.com/ssr-assets/wishlist.DF2rcTAx.js
 https://www.myprotein.com/ssr-assets/prices.OGuexUX8.js
 https://www.myprotein.com/ssr-assets/helper.4hhAZUZX.js
+https://au.myprotein.com/ssr-assets/BuildYourOwnBundle.astro_astro_type_script_index_0_lang.z-Li_hmQ.js
+https://au.myprotein.com/ssr-assets/ByobProductItem.astro_astro_type_script_index_0_lang.BqTR00zz.js
+https://de.myprotein.com/account/ssr-assets/LoginForm.DJMU_6Qa.js
+https://de.myprotein.com/account/ssr-assets/Login.DtGNtv_V.js
+https://de.myprotein.com/account/ssr-assets/FormButton.CnrLlE8H.js
+https://de.myprotein.com/account/ssr-assets/LoadingCircle.DyV1vriC.js
+https://de.myprotein.com/account/ssr-assets/Logo.DkeCKhde.js
+https://de.myprotein.com/account/ssr-assets/Form.CtMnAURf.js
+https://de.myprotein.com/account/ssr-assets/storefront.BAY-7ZFj.js
+https://de.myprotein.com/account/ssr-assets/index.KgvB7I63.js
+https://de.myprotein.com/account/ssr-assets/x.DU4TX6-T.js
+https://de.myprotein.com/ssr-assets/addToBasket.BaziIjFO.js
+https://de.myprotein.com/ssr-assets/session.dzqbRvjK.js
+https://kz.myprotein.com/account/ssr-assets/Register.BQ3g-j07.js
