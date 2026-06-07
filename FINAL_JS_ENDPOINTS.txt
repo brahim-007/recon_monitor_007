@@ -5363,3 +5363,4 @@ https://de.myprotein.com/account/ssr-assets/x.DU4TX6-T.js
 https://de.myprotein.com/ssr-assets/addToBasket.BaziIjFO.js
 https://de.myprotein.com/ssr-assets/session.dzqbRvjK.js
 https://kz.myprotein.com/account/ssr-assets/Register.BQ3g-j07.js
+https://fr-ca.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.D_CJwP6J.js
