@@ -5410,3 +5410,6 @@ https://nz.myprotein.com/ssr-assets/wishlist.DF2rcTAx.js
 https://nz.myprotein.com/ssr-assets/miniQuizRecommendedBadges.Oouf5zp-.js
 https://nz.myprotein.com/ssr-assets/session.dzqbRvjK.js
 https://nz.myprotein.com/ssr-assets/web-vitals.D2fGf8fN.js
+https://ca.myprotein.com/account/ssr-assets/Register.BQ3g-j07.js
+https://fr-ca.myprotein.com/ssr-assets/addToBasket.BaziIjFO.js
+https://fr-ca.myprotein.com/ssr-assets/basket.c35af98a.reP9lStz.js

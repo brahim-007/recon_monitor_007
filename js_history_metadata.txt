@@ -9317,3 +9317,8 @@ https://nz.myprotein.com/ssr-assets/wishlist.DF2rcTAx.js [[32m200[0m] [[35m33
 https://sgtm.myprotein.com/gtm.js?id=GTM-TLLKQLXB [[32m200[0m] [[35m784207[0m]
 https://si.myprotein.com/ssr-assets/basket.c35af98a.reP9lStz.js [[31m406[0m] [[35m980[0m]
 https://www.myprotein.com.cy/ssr-assets/HeaderFooter.astro_astro_type_script_index_2_lang.HExJfrRT.js [[31m406[0m] [[35m980[0m]
+https://ca.myprotein.com/account/ssr-assets/Register.BQ3g-j07.js [[32m200[0m] [[35m3262[0m]
+https://fr-ca.myprotein.com/ssr-assets/basket.c35af98a.reP9lStz.js [[32m200[0m] [[35m350[0m]
+https://fr-ca.myprotein.com/ssr-assets/addToBasket.BaziIjFO.js [[32m200[0m] [[35m45030[0m]
+https://kz.myprotein.com/account/ssr-assets/LinkButton.Ds3gQFmP.js [[32m200[0m] [[35m1932[0m]
+https://sgtm.myprotein.com/gtm.js?id=GTM-TLLKQLXB [[32m200[0m] [[35m784110[0m]
