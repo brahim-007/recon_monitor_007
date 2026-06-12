@@ -5886,3 +5886,15 @@ https://www.myprotein.com.sg/ssr-assets/PdpV2Container.astro_astro_type_script_i
 https://www.myprotein.com.sg/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_0_lang.C1OAzvVd.js
 https://www.myprotein.com.sg/ssr-assets/Wishlist.astro_astro_type_script_index_0_lang.Dtstpeii.js
 https://www.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_3_lang.CAQ6IHsv.js
+https://fr-ca.myprotein.com/ssr-assets/ProductDetails.astro_astro_type_script_index_0_lang.Bc83iwFL.js
+https://fr.myprotein.com/ssr-assets/session.To_rbLot.js
+https://kz.myprotein.com/ssr-assets/basket.c35af98a.reP9lStz.js
+https://kz.myprotein.com/ssr-assets/index.C4V51mLt.js
+https://nl.myprotein.com/ssr-assets/DesktopNav.BAFGtDbB.js
+https://si.myprotein.com/ssr-assets/index.C4V51mLt.js
+https://www.myprotein.com.hk/ssr-assets/MobileNav.astro_astro_type_script_index_0_lang.DurSC59J.js
+https://www.myprotein.com/ssr-assets/DynamicReferralWidget.astro_astro_type_script_index_0_lang.Cyi4qzeP.js
+https://www.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_0_lang.C1OAzvVd.js
+https://www.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_1_lang.CSmTSHnJ.js
+https://www.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_2_lang.Bc9n2-3O.js
+https://www.myprotein.com/ssr-assets/ProductDetails.astro_astro_type_script_index_0_lang.Bc83iwFL.js
