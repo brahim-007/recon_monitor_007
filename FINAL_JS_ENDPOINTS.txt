@@ -5980,3 +5980,4 @@ https://nz.myprotein.com/account/ssr-assets/index.DVyJoFA0.js
 https://nz.myprotein.com/account/ssr-assets/captcha.BVU62w5Q.js
 https://nz.myprotein.com/account/ssr-assets/web-vitals.D2fGf8fN.js
 https://www.myprotein.com/ssr-assets/GlobalHelpCentreCollection.astro_astro_type_script_index_0_lang.B-CTRgKr.js
+https://nz.myprotein.com/ssr-assets/DynamicReferralWidget.astro_astro_type_script_index_0_lang.Cyi4qzeP.js
