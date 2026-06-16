@@ -6104,3 +6104,9 @@ https://si.myprotein.com/ssr-assets/trackerv80.js
 https://www.myprotein.com.my/ssr-assets/Layout.astro_astro_type_script_index_2_lang.DWwET5GS.js
 https://www.myprotein.com/ssr-assets/PdpV2Container.astro_astro_type_script_index_0_lang.xtn1rNL1.js
 https://www.myprotein.com/ssr-assets/ProductDetails.astro_astro_type_script_index_0_lang.DdlBqrpJ.js
+https://ca.myprotein.com/ssr-assets/ProductDetails.astro_astro_type_script_index_0_lang.DdlBqrpJ.js
+https://si.myprotein.com/ssr-assets/ProductGallery.astro_astro_type_script_index_1_lang.DYMia32I.js
+https://si.myprotein.com/ssr-assets/formatPriceBasedOnLocale.Dm-n1iAF.js
+https://si.myprotein.com/ssr-assets/addToBasket.Bsv6ptT7.js
+https://si.myprotein.com/ssr-assets/session.To_rbLot.js
+https://us.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script_index_0_lang.DQOAl7XS.js
