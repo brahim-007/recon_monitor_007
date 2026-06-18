@@ -6315,3 +6315,7 @@ https://si.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script
 https://si.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.DfYw73HK.js
 https://us.myprotein.com/ssr-assets/ReviewsWrapper.CAEXtvuW.js
 https://us.myprotein.com/ssr-assets/addToBasket.Cp2RoPdT.js
+https://au.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script_index_0_lang.DPJ1Vj1c.js
+https://de.myprotein.com/ssr-assets/addToBasket.Cp2RoPdT.js
+https://fr-ca.myprotein.com/ssr-assets/Tabs.astro_astro_type_script_index_0_lang.C4MK2PCU.js
+https://us.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.DfYw73HK.js
