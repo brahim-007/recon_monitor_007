@@ -85,3 +85,4 @@ http://origin.myprotein.com
 http://origin-de.myprotein.com
 http://origin-nz.myprotein.com
 http://origin-m.nz.myprotein.com
+https://preview.sgtm.myprotein.com
