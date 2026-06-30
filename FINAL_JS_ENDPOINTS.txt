@@ -8391,3 +8391,13 @@ https://us.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.
 https://www.myprotein.com.my/ssr-assets/PdpV2Container.astro_astro_type_script_index_0_lang.9YmXZp52.js
 https://www.myprotein.com/ssr-assets/GlobalHelpCentreCollection.astro_astro_type_script_index_0_lang.XizwDe7c.js
 https://www.myprotein.com/ssr-assets/EmailWhenInStockButton.astro_astro_type_script_index_0_lang.DDKO0E3Q.js
+https://ca.myprotein.com/account/ssr-assets/runtime-dom.esm-bundler.CfcaI0in.js
+https://ca.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_3_lang.F9vEwvT1.js
+https://kz.myprotein.com/account/ssr-assets/hoisted.CH3PnIa-.js
+https://kz.myprotein.com/account/ssr-assets/hoisted.C6u0KaT3.js
+https://kz.myprotein.com/account/ssr-assets/hoisted.D09VQCyo.js
+https://kz.myprotein.com/account/ssr-assets/tracker-v22.js?v=1
+https://nz.myprotein.com/account/ssr-assets/Picture.fgh0cqrS.js
+https://si.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script_index_0_lang.Enu_m6ND.js
+https://si.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.DoxRU3Au.js
+https://www.myprotein.com.cy/ssr-assets/Footer.astro_astro_type_script_index_0_lang.f2xRckRk.js
