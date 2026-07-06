@@ -9135,3 +9135,5 @@ https://www.myprotein.com.my/ssr-assets/DesktopSearch.astro_astro_type_script_in
 https://www.myprotein.com.cy/ssr-assets/Layout.astro_astro_type_script_index_5_lang.w4zNoV1C.js
 https://www.myprotein.com/ssr-assets/DesktopNav.D4rH55ff.js
 https://www.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.DYzMzBuV.js
+https://kz.myprotein.com/account/ssr-assets/BannerImage.B-H8GPJ7.js
+https://www.myprotein.com.my/ssr-assets/Layout.astro_astro_type_script_index_2_lang.6HD2_AGS.js
