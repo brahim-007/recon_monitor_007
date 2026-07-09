@@ -9644,3 +9644,7 @@ https://us.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_sc
 https://us.myprotein.com/ssr-assets/ReviewsWrapper.BJ3jqvyL.js
 https://www.myprotein.com.my/ssr-assets/Layout.astro_astro_type_script_index_5_lang.Cv3IBg2t.js
 https://www.myprotein.com.my/ssr-assets/HeaderFooter.astro_astro_type_script_index_1_lang.B3JeC4U4.js
+https://nz.myprotein.com/account/ssr-assets/Login.YWSQTiq2.js
+https://nz.myprotein.com/ssr-assets/Facets.astro_astro_type_script_index_0_lang.BGg8Vppo.js
+https://nz.myprotein.com/ssr-assets/index.B87aiwgu.js
+https://nz.myprotein.com/ssr-assets/jsonParse.DmCFq1Ah.js
