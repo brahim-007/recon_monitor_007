@@ -88,3 +88,4 @@ http://origin-m.nz.myprotein.com
 https://preview.sgtm.myprotein.com
 http://links.s.myprotein.com
 http://origin-fr.myprotein.com
+http://gb1.myprotein.com

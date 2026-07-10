@@ -9690,3 +9690,15 @@ https://www.myprotein.com.hk/ssr-assets/ProductDetails.astro_astro_type_script_i
 https://www.myprotein.com.my/ssr-assets/ProductDetails.astro_astro_type_script_index_0_lang.DSRb0ExP.js
 https://www.myprotein.com.sg/ssr-assets/SessionSettings.astro_astro_type_script_index_0_lang.CBK38fUr.js
 https://www.myprotein.com.sg/ssr-assets/PdpV2Container.astro_astro_type_script_index_0_lang.Q2BvNl5e.js
+https://ca.myprotein.com/account/ssr-assets/Login.B44ApsQ1.js
+https://ca.myprotein.com/account/ssr-assets/ToastPopup.ONAmURng.js
+https://ca.myprotein.com/account/ssr-assets/client.CSMMEEvy.js
+https://kz.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_1_lang.By2uOsFT.js
+https://nl.myprotein.com/account/ssr-assets/Login.B44ApsQ1.js
+https://nl.myprotein.com/account/ssr-assets/ToastPopup.ONAmURng.js
+https://nl.myprotein.com/account/ssr-assets/client.CSMMEEvy.js
+https://nl.myprotein.com/ssr-assets/GlobalHelpCentreCollection.astro_astro_type_script_index_0_lang.EIXdvQwp.js
+https://nz.myprotein.com/account/ssr-assets/Login.B44ApsQ1.js
+https://nz.myprotein.com/account/ssr-assets/Login.BE3nxGkI.js
+https://nz.myprotein.com/account/ssr-assets/ToastPopup.ONAmURng.js
+https://nz.myprotein.com/account/ssr-assets/client.CSMMEEvy.js
