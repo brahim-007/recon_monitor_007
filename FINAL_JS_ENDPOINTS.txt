@@ -9819,3 +9819,7 @@ https://kz.myprotein.com/account/ssr-assets/Register.t4g2a02u.js
 https://kz.myprotein.com/account/ssr-assets/Login.B44ApsQ1.js
 https://kz.myprotein.com/account/ssr-assets/ToastPopup.ONAmURng.js
 https://kz.myprotein.com/account/ssr-assets/client.CSMMEEvy.js
+https://ca.myprotein.com/account/ssr-assets/index.BzAzb4rA.js
+https://ca.myprotein.com/account/ssr-assets/runtime-core.esm-bundler.BZ6IyJ5R.js
+https://ca.myprotein.com/account/ssr-assets/runtime-dom.esm-bundler.CJWWQtKT.js
+https://ca.myprotein.com/account/ssr-assets/hoisted.CH3PnIa-.js
