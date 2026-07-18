@@ -10270,3 +10270,7 @@ https://sgtm.si.myprotein.com/analytics.js
 https://si.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.CcHSP1O-.js
 https://www.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_1_lang.By2uOsFT.js
 https://www.myprotein.com/ssr-assets/formatPriceBasedOnLocale.D1jUE2pk.js
+https://ca.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.CcHSP1O-.js
+https://fr-ca.myprotein.com/account/ssr-assets/ToastPopup.D1nt8l11.js
+https://nz.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.CcHSP1O-.js
+https://sgtm.de.myprotein.com/analytics.js
