@@ -13387,3 +13387,17 @@ https://www.myprotein.com.cy/ssr-assets/SessionSettings.astro_astro_type_script_
 https://www.myprotein.com.cy/ssr-assets/MobileSearch.astro_astro_type_script_index_0_lang.pXAddEAh.js
 https://www.myprotein.com.hk/ssr-assets/MobileNav.astro_astro_type_script_index_0_lang.C2Dp9FaX.js
 https://www.myprotein.com.hk/ssr-assets/ClientInit.astro_astro_type_script_index_0_lang.CvoTvemZ.js
+https://au.myprotein.com/ssr-assets/MobileNav.astro_astro_type_script_index_0_lang.C2Dp9FaX.js
+https://si.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_0_lang.2YqBdSmt.js
+https://si.myprotein.com/ssr-assets/PdpV2Container.astro_astro_type_script_index_0_lang.DBaz5J0-.js
+https://si.myprotein.com/ssr-assets/Wishlist.astro_astro_type_script_index_0_lang.CyFTsMNy.js
+https://CA.myprotein.com/ssr-assets/ClientInit.astro_astro_type_script_index_0_lang.CvoTvemZ.js
+https://CA.myprotein.com/ssr-assets/HeaderFooter.astro_astro_type_script_index_2_lang.upfGkFWh.js
+https://US.myprotein.com/account/ssr-assets/LoginBanner.DtiR9y6w.js
+https://US.myprotein.com/account/ssr-assets/BannerImage.CY6qW6ic.js
+https://US.myprotein.com/account/ssr-assets/Form.BEBsKIBP.js
+https://US.myprotein.com/account/ssr-assets/FormButton.DPTJQ3t7.js
+https://au.myprotein.com/ssr-assets/HeaderFooter.astro_astro_type_script_index_1_lang.9Sl85iLl.js
+https://ca.myprotein.com/ssr-assets/formatPriceBasedOnLocale.CxKDUovC.js
+https://us.myprotein.com/account/ssr-assets/info.CexP_oex.js
+https://www.myprotein.com.hk/ssr-assets/Layout.astro_astro_type_script_index_5_lang.DKKMgMzx.js
