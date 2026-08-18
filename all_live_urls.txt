@@ -88727,7 +88727,7 @@ https://fr.myprotein.com/basket/?buylist=17604525,17604660,17087650&rctxt=recs-f
 https://fr.myprotein.com/basket/?buylist=13528187,10529335,17712277&rctxt=recs-fbt-default
 https://fr.myprotein.com/basket/?buylist=17247516,14680347,16826036&rctxt=recs-fbt-default
 https://fr.myprotein.com/basket/?buylist=17619299,17619274,17619323&rctxt=recs-fbt-default
-https://nz.myprotein.com/
+https://nz.myprotein.com
 https://nz.myprotein.com/basket/?buylist=15413537,12560307,12591091&rctxt=recs-fbt-default
 https://nz.myprotein.com/basket/?buylist=12595914,12544972,12560307&rctxt=recs-fbt-default
 https://nz.myprotein.com/basket/?buylist=15368199,12591091,12560307&rctxt=recs-fbt-default
@@ -88740,3 +88740,14 @@ https://us.myprotein.com/basket/?buylist=17618991,12095869,17619008&rctxt=recs-f
 https://us.myprotein.com/basket/?buylist=17619008,12095869,10852413&rctxt=recs-fbt-default
 https://www.myprotein.com/p/sports-clothing/mp-women-s-tempo-twist-back-sports-bra-midnight/17604456/?variation=17604511
 https://www.myprotein.com/p/sports-clothing/mp-women-s-tempo-twist-back-sports-bra-sky-blue/17619264/?variation=17619339
+https://ca.myprotein.com/
+https://fr.myprotein.com/black-friday/pre-workout-deals.list
+https://kz.myprotein.com/basket/?buylist=11985043,17712277,10530054&rctxt=recs-fbt-default
+https://kz.myprotein.com/p/sports-nutrition/impact-whey-protein-powder/10530943/?rctxt=recs-pdp-customers_eventually_bought
+https://kz.myprotein.com/p/sports-nutrition/impact-whey-protein-powder/10530943/?rctxt=recs-home-peek-manual
+https://nl.myprotein.com/p/sports-clothing/mp-power-fietsshort-voor-dames-zwart/14871073/?rctxt=recs-pdp-customers_eventually_bought
+https://nz.myprotein.com/ssr-assets/ClientInit.astro_astro_type_script_index_0_lang.DWL069Q2.js
+https://nz.myprotein.com/ssr-assets/FacetsLegacy.astro_astro_type_script_index_0_lang.Bu1ml__4.js
+https://si.myprotein.com/account/ssr-assets/Login.Bz7llX1J.js
+https://si.myprotein.com/account/ssr-assets/captcha.ChZ-L_tZ.js
+https://us.myprotein.com/ssr-assets/SessionSettings.astro_astro_type_script_index_0_lang.ONkucHgA.js
