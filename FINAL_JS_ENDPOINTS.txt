@@ -14462,3 +14462,9 @@ https://fr-ca.myprotein.com/ssr-assets/ProductListWidget.astro_astro_type_script
 https://www.myprotein.com.hk/ssr-assets/ClientInit.astro_astro_type_script_index_0_lang.BkxOSWEQ.js
 https://www.myprotein.com.hk/ssr-assets/HeaderFooter.astro_astro_type_script_index_3_lang.Dn_pApMt.js
 https://www.myprotein.com.hk/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_script_index_1_lang.CIHhSFsM.js
+https://de.myprotein.com/ssr-assets/formatPriceBasedOnLocale.BJePZhyz.js
+https://fr-ca.myprotein.com/ssr-assets/HeaderFooter.astro_astro_type_script_index_1_lang.Bo1vUlNK.js
+https://fr-ca.myprotein.com/ssr-assets/HeaderFooter.astro_astro_type_script_index_2_lang.DePCGmh0.js
+https://fr.myprotein.com/ssr-assets/ProductListWidget.astro_astro_type_script_index_0_lang.fj6V0aFQ.js
+https://nz.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script_index_0_lang.BCQ5CeKk.js
+https://nz.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.DKTAKttC.js
