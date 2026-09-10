@@ -90,3 +90,5 @@ http://links.s.myprotein.com
 http://origin-fr.myprotein.com
 http://gb1.myprotein.com
 http://checkout.nl.myprotein.com
+http://altitude.fr.myprotein.com
+http://nl.myprotein.com
