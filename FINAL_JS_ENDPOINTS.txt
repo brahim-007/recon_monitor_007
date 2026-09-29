@@ -17914,3 +17914,8 @@ https://www.myprotein.com/ssr-assets/FrequentlyBoughtTogether.astro_astro_type_s
 https://www.myprotein.com/ssr-assets/OftenBoughtTogether.astro_astro_type_script_index_0_lang.BjJzmwho.js
 https://www.myprotein.com/ssr-assets/index.astro_astro_type_script_index_0_lang.ChMUEyGv.js
 https://www.myprotein.com/ssr-assets/basket.astro_astro_type_script_index_1_lang.K7eD6Xne.js
+https://fr-ca.myprotein.com/ssr-assets/DesktopNav.Cm4IOFDY.js
+https://fr-ca.myprotein.com/ssr-assets/index.Ce1os6Eb.js
+https://kz.myprotein.com/account/ssr-assets/BannerImage.CcWklP12.js
+https://kz.myprotein.com/account/ssr-assets/ToastPopup.Di2FZvJC.js
+https://kz.myprotein.com/ssr-assets/DesktopNav.Cm4IOFDY.js
