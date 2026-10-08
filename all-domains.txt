@@ -92,3 +92,5 @@ http://gb1.myprotein.com
 http://checkout.nl.myprotein.com
 http://altitude.fr.myprotein.com
 http://nl.myprotein.com
+http://horizon-api.de.myprotein.com
+http://horizon-api.kz.myprotein.com
