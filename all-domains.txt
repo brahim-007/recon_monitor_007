@@ -94,3 +94,5 @@ http://altitude.fr.myprotein.com
 http://nl.myprotein.com
 http://horizon-api.de.myprotein.com
 http://horizon-api.kz.myprotein.com
+http://m.de.myprotein.com
+http://uat.www.myprotein.com
