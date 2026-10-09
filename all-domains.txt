@@ -96,3 +96,9 @@ http://horizon-api.de.myprotein.com
 http://horizon-api.kz.myprotein.com
 http://m.de.myprotein.com
 http://uat.www.myprotein.com
+http://hjalp.myprotein.com
+http://kz.myprotein.com
+http://il.myprotein.com
+http://horizon-api.fr.myprotein.com
+http://horizon-api.si.myprotein.com
+http://horizon-api.us.myprotein.com

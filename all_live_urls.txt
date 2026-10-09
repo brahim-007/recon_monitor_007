@@ -104037,3 +104037,6 @@ https://www.myprotein.com/partnerships/marvel.list
 https://www.myprotein.com/partnerships/myprotein-x-vimto/products.list
 https://www.myprotein.com/ssr-assets/ClientInit.astro_astro_type_script_index_0_lang.EPxLuv2r.js
 https://www.myprotein.com/partnerships/krispy-kreme.list
+https://ca.myprotein.com/sports-nutrition/caprylic-acid-softgels/12256671.html?rctxt=default
+https://ca.myprotein.com/sports-nutrition/impact-whey-protein/10852500.html?autocomplete=productsuggestion
+https://www.myprotein.com/brandhub/brands/heliocare.list
