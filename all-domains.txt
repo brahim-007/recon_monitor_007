@@ -102,3 +102,6 @@ http://il.myprotein.com
 http://horizon-api.fr.myprotein.com
 http://horizon-api.si.myprotein.com
 http://horizon-api.us.myprotein.com
+http://horizon-api.ca.myprotein.com
+http://m.hr.myprotein.com
+http://m.ie.myprotein.com
