@@ -110,3 +110,7 @@ http://webmail.myprotein.com
 http://horizon-api.fr-ca.myprotein.com
 http://links.n.myprotein.com
 http://www.myprotein.com
+http://horizon-api.au.myprotein.com
+http://horizon-api.nl.myprotein.com
+http://ie.myprotein.com
+http://us.myprotein.com
