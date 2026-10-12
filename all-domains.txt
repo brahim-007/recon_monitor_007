@@ -114,3 +114,5 @@ http://horizon-api.au.myprotein.com
 http://horizon-api.nl.myprotein.com
 http://ie.myprotein.com
 http://us.myprotein.com
+http://hilfe.myprotein.com
+http://id.myprotein.com

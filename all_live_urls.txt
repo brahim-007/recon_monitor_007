@@ -104044,3 +104044,4 @@ https://ca.myprotein.com/nutrition/creatine.list
 https://ca.myprotein.com/ranges/pro.list
 https://ca.myprotein.com/sports-nutrition/clear-vegan-isolate/12344674.html?rctxt=default
 https://fr-ca.myprotein.com/ranges/core.list
+https://fr.myprotein.com/clothing/new-in.list
