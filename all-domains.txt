@@ -116,3 +116,5 @@ http://ie.myprotein.com
 http://us.myprotein.com
 http://hilfe.myprotein.com
 http://id.myprotein.com
+http://helpie.myprotein.com
+http://horizon-api.nz.myprotein.com
