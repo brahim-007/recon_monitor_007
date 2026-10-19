@@ -121,3 +121,4 @@ http://horizon-api.nz.myprotein.com
 http://horizon-api.www.myprotein.com
 http://ftp.myprotein.com
 http://helpus.myprotein.com
+http://checkout.de.myprotein.com
