@@ -104051,3 +104051,4 @@ https://ca.myprotein.com/sports-nutrition/whey-forward/13625704.html?autocomplet
 https://de.myprotein.com/gifting-hub/advent.list
 https://nl.myprotein.com/nutrition/healthy-food-drinks.list
 https://ca.myprotein.com/accountOrderHistory.account
+https://de.myprotein.com/c/nutrition/bundles
