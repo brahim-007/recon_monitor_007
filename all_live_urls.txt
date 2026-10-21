@@ -104052,3 +104052,8 @@ https://de.myprotein.com/gifting-hub/advent.list
 https://nl.myprotein.com/nutrition/healthy-food-drinks.list
 https://ca.myprotein.com/accountOrderHistory.account
 https://de.myprotein.com/c/nutrition/bundles
+https://ca.myprotein.com/all-offers/super-55-off.list
+https://ca.myprotein.com/clear-whey-isolate/clear-whey-products.list
+https://ca.myprotein.com/nutrition/amino-acids/bcaa.list
+https://ca.myprotein.com/nutrition/protein/clear-protein-drinks.list
+https://fr.myprotein.com/nutrition-sportive/pea-nut-square/11308970.html
