@@ -128,3 +128,4 @@ http://altitude.ca.myprotein.com
 http://de.myprotein.com
 http://link.n.myprotein.com
 http://m.fr.myprotein.com
+http://si.myprotein.com
