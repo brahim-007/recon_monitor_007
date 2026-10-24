@@ -18562,3 +18562,4 @@ https://de.myprotein.com/ssr-assets/SideSheet.astro_astro_type_script_index_0_la
 https://de.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script_index_0_lang.BU--5vJG.js
 https://de.myprotein.com/ssr-assets/page.CQWjsXKf.js
 https://de.myprotein.com/ssr-assets/trackerv88.js
+https://www.myprotein.com/ssr-assets/StickyMobileCheckout.astro_astro_type_script_index_0_lang.Em_KqqZ4.js
