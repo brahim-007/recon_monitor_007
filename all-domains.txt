@@ -129,3 +129,4 @@ http://de.myprotein.com
 http://link.n.myprotein.com
 http://m.fr.myprotein.com
 http://si.myprotein.com
+http://fr-ca.myprotein.com
